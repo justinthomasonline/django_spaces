@@ -1,0 +1,210 @@
+{% extends "base/agentbase.html" %}
+
+{% block content %}
+
+<div class="container">
+    <h1 class="mt-4">{{data.title}}</h1>
+        
+    <div class="row justify-content-center">
+        <div class="col-lg-12">
+            <div class="card shadow-lg border-0 rounded-lg mt-2">
+                <!-- <div class="card-header"><h3 class="text-center font-weight-light my-4">Register with us</h3></div> -->
+                <div class="card-body">
+                 
+                    <form method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <h5>Primary details</h5>
+                            <div class="row">
+                                
+                                <div class="col-lg-3 mt-2">
+                                    {{ p_form.PropertyID.label }}
+                                    {{ p_form.PropertyID }}
+                                    <span class="small text-danger"> {{ p_form.errors.PropertyID }}</span>
+
+                                </div>
+
+                                
+                                <div class="col-lg-3 mt-2" >
+                                    {{ p_form.PropertyTitle.label }}
+                                    {{ p_form.PropertyTitle }}
+                                    <span class="small text-danger">{{ p_form.errors.PropertyTitle }}</span>
+
+                                </div>
+                                <div class="col-lg-3 mt-2">
+                                    {{ p_form.YearBuilt.label }}
+                                    {{ p_form.YearBuilt }}
+                                    <span class="small text-danger"> {{ p_form.errors.YearBuilt }} </span>
+
+                                </div>
+
+
+                                <div class="col-lg-3 mt-2">
+                                    {{ p_form.RentBuy.label }}
+                                    {{ p_form.RentBuy }}
+                                    <span class="small text-danger"> {{ p_form.errors.RentBuy }}</span>
+                                    
+
+                                </div>
+
+                                <div class="col-lg-3 mt-2">
+                                    {{ p_form.PropertyType.label }}
+                                    {{ p_form.PropertyType }}
+                                    <span class="small text-danger"> {{ p_form.errors.PropertyType }}</span>
+
+                                </div>
+
+
+                                <div class="col-lg-3 mt-2">
+                                    {{ p_form.TimePeriod.label }}
+                                    {{ p_form.TimePeriod }}
+                                    <span class="small text-danger"></span>{{ p_form.errors.TimePeriod }}</span>
+
+                                </div>
+
+
+                                <div class="col-lg-3 mt-2">
+                                    {{ p_form.Furnishing.label }}
+                                    {{ p_form.Furnishing }}
+                                    <span class="small text-danger">{{ p_form.errors.Furnishing }}</span>
+                                </div>
+
+
+                                <div class="col-lg-3 mt-2">
+                                    {{ p_form.Price.label }}
+                                    {{ p_form.Price }}
+                                <span class="small text-danger">{{ p_form.errors.Price }}</span> 
+
+                                </div>
+                            
+
+                                <div class="col-lg-3 mt-2">
+                                    {{ p_form.Floor.label }}
+                                    {{ p_form.Floor }}
+                                    <span class="small text-danger"> {{ p_form.errors.Floor }} </span>
+
+                                </div>
+
+                                <div class="col-lg-3 mt-2">
+                                    {{ p_form.Area.label }}
+                                    {{ p_form.Area }}
+                                    <span class="small text-danger"> {{ p_form.errors.Area }} </span>
+
+                                </div>
+
+                                <div class="col-lg-3 mt-2">
+                                    {{ p_form.BedRoom.label }}
+                                    {{ p_form.BedRoom }}
+                                    <span class="small text-danger"> {{ p_form.errors.BedRoom }} </span>
+
+                                </div>
+
+                                <div class="col-lg-3 mt-2">
+                                    {{ p_form.BathRoom.label }}
+                                    {{ p_form.BathRoom }}
+                                    <span class="small text-danger"> {{ p_form.errors.BathRoom }} </span>
+
+                                </div>
+
+
+                                <div class="col-lg-3 mt-2">
+                                    {{ p_form.Video.label }}
+                                    {{ p_form.Video }}
+                                    <span class="small text-danger"> {{ p_form.errors.Video }} </span>
+
+                                </div>
+
+
+                                <div class="col-lg-3 mt-2">
+                                    {{ p_form.MainLocation.label }}
+                                    {{ p_form.MainLocation }}
+                                    <span class="small text-danger"> {{ p_form.errors.MainLocation }} </span>
+
+                                </div>
+
+
+                                <div class="col-lg-3 mt-2">
+                                    {{ p_form.SubLocation.label }}
+                                    {{ p_form.SubLocation }}
+                                    <span class="small text-danger"> {{ p_form.errors.SubLocation }} </span>
+
+                                </div>
+                            </div>  
+                            
+                            <hr>
+                            <h5>Aminities</h5>
+                            <div class="row">
+                            {% for aminity in aminities %}
+
+                           
+                                <div class="col-lg-3 mt-2">
+                                  <input type="checkbox" name="aminities" value="{{aminity.id}}" >  {{aminity.Type}}
+                                </div>
+                           
+
+                            
+                            {% endfor %}
+                        </div>
+                        <hr>
+                        <h5>Images</h5>
+                        <div class="row">
+                           
+                            {% for imgform in imgformset %}
+
+                           
+
+                            <div class="col-lg-6 mt-2">
+                                {{ imgform.PropertyImageType.label }}
+                                {{ imgform.PropertyImageType }}
+                                
+                              </div>
+
+                              <div class="col-lg-6 mt-2">
+                                {{ imgform.PropertyImage.label }}
+                                {{ imgform.PropertyImage }}
+                                
+                              </div>
+
+                              
+
+                              {% endfor %}
+                             
+
+                            
+                            
+
+                              
+
+                              
+                        </div>
+
+                        <div class="row" id="add_property_img_contianer">
+
+
+                             
+                        </div>
+
+                        <div class="row">
+                            <div class="col-lg-12 mt-2">
+                                <input type="button" class="btn btn-sm btn-success" value="Add more " id="add-more-property-image">                            
+                              </div>
+                        </div>
+
+                     
+                        
+                           
+                        </div>
+                        <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
+                             <button type="submit" class="btn btn-primary">Register</button>
+                        </div>
+                    </form>
+                </div>
+                <!-- <div class="card-footer text-center">
+                    <div class="small"><a href="{% url 'AgencyLogin' %}">Need an account? Sign up!</a></div>
+                </div> -->
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

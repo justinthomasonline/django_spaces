@@ -1,0 +1,117 @@
+{% extends "base/agencybase.html" %}
+
+{% block content %}
+
+<div class="container">
+    <h1 class="mt-4">{{data.title}}</h1>
+        
+    <div class="row justify-content-center">
+        <div class="col-lg-12">
+            <div class="card shadow-lg border-0 rounded-lg mt-2">
+                <!-- <div class="card-header"><h3 class="text-center font-weight-light my-4">Register with us</h3></div> -->
+                <div class="card-body">
+                 
+                    <form method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="form-group">
+
+                            <div class="row">
+
+                                <div class="col-lg-6 mt-2" >
+                                    {{ user.username.label }}
+                                    {{ user.username }}
+                                    <span class="small text-danger">  {{ user.errors.username }}</span>
+                                   
+
+                                </div>
+                                <div class="col-lg-6 mt-2">
+                                    {{ user.password.label }}
+                                    {{ user.password }}
+                                    <span class="small text-danger"> {{ user.errors.password }}</span>
+
+                                </div>
+
+                                
+                            <div class="col-lg-6 mt-2" >
+                                {{ agent.Name.label }}
+                                {{ agent.Name }}
+                                <span class="small text-danger">{{ agent.errors.Name }}</span>
+
+                            </div>
+                            <div class="col-lg-6 mt-2">
+                                {{ agent.Languages.label }}
+                                {{ agent.Languages }}
+                                <span class="small text-danger"> {{ agent.errors.Languages }} </span>
+
+                            </div>
+
+
+                            <div class="col-lg-6 mt-2">
+                                {{ agent.Nationality.label }}
+                                {{ agent.Nationality }}
+                                <span class="small text-danger"> {{ agent.errors.Nationality }}</span>
+                                
+
+                            </div>
+
+                            <div class="col-lg-6 mt-2">
+                                {{ agent.Image.label }}
+                                {{ agent.Image }}
+                                <span class="small text-danger"> {{ agent.errors.Image }}</span>
+
+                            </div>
+
+
+                            <div class="col-lg-6 mt-2">
+                                {{ agent.OfficeAddress.label }}
+                                {{ agent.OfficeAddress }}
+                                <span class="small text-danger"></span>{{ agent.errors.OfficeAddress }}</span>
+
+                            </div>
+
+
+                            <div class="col-lg-6 mt-2">
+                                {{ agent.Email.label }}
+                                {{ agent.Email }}
+                                <span class="small text-danger">{{ agent.errors.Email }}</span>
+                            </div>
+
+
+                            <div class="col-lg-6 mt-2">
+                                {{ agent.Phone.label }}
+                                {{ agent.Phone }}
+                               <span class="small text-danger">{{ agent.errors.Phone }}</span> 
+
+                            </div>
+                           
+
+
+      
+
+                             
+
+                            <div class="col-lg-6 mt-2">
+                                {{ agent.Description.label }}
+                                {{ agent.Description }}
+                                <span class="small text-danger"> {{ agent.errors.Description }} </span>
+
+                            </div>
+
+
+                        </div>
+                        <!-- {{ form.as_p }} -->
+                        </div>
+                        <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
+                             <button type="submit" class="btn btn-primary">Register</button>
+                        </div>
+                    </form>
+                </div>
+                <!-- <div class="card-footer text-center">
+                    <div class="small"><a href="{% url 'AgencyLogin' %}">Need an account? Sign up!</a></div>
+                </div> -->
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
