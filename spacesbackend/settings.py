@@ -43,8 +43,9 @@ INSTALLED_APPS = [
     #myapps
     'agency.apps.AgencyConfig', # you can use app name a agency or agency.apps.AgencyConfig
     'agent',
-    'location',
-    'property',
+    'propertymeta',
+    'properties',
+    
 ]
 
 MIDDLEWARE = [
@@ -88,13 +89,25 @@ WSGI_APPLICATION = 'spacesbackend.wsgi.application'
 #     }
 # }
 
+# DATABASES = {
+#        'default': {
+#            'ENGINE': 'djongo',
+#            'NAME': 'spaces',
+#        }
+#    }
 DATABASES = {
-       'default': {
-           'ENGINE': 'djongo',
-           'NAME': 'spaces',
-       }
-   }
-
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'OPTIONS': {
+            'sql_mode': 'traditional',
+        }, 
+        'NAME': 'spaces',
+        'USER': 'root',
+        'PASSWORD': '',
+        'HOST': 'localhost',   # Or an IP Address that your DB is hosted on
+        'PORT': '3308',
+    }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators

@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from django.conf.urls import include
+from django.conf.urls import include,url
 
 
 
@@ -24,7 +24,8 @@ urlpatterns = [
     path('superadmin/', admin.site.urls),
     path('', include('agency.urls')),
     path('agent/', include('agent.urls')),
-    path('property/', include('property.urls')),
-      
+    path('property/', include('properties.urls')),
+   
 ]
+
  

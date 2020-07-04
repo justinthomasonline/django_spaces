@@ -48,8 +48,8 @@ def AgencyRegister(request):
     if request.method == 'POST':
         form = AgencyRegisterForm(request.POST,request.FILES) 
         if form.is_valid():
-            print('form valid')
             form.save()
+            return HttpResponse('Registered')
         else:
             print(form.errors)
             content = {'form':form}

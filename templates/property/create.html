@@ -58,7 +58,7 @@
                                 <div class="col-lg-3 mt-2">
                                     {{ p_form.TimePeriod.label }}
                                     {{ p_form.TimePeriod }}
-                                    <span class="small text-danger"></span>{{ p_form.errors.TimePeriod }}</span>
+                                    <span class="small text-danger">{{ p_form.errors.TimePeriod }}</span>
 
                                 </div>
 
@@ -129,6 +129,37 @@
                                     <span class="small text-danger"> {{ p_form.errors.SubLocation }} </span>
 
                                 </div>
+
+                                <div class="col-lg-3 mt-2">
+                                    {{ p_form.Latitude.label }}
+                                    {{ p_form.Latitude }}
+                                    <span class="small text-danger"> {{ p_form.errors.Latitude }} </span>
+
+                                </div>
+
+
+                                <div class="col-lg-3 mt-2">
+                                    {{ p_form.Longitude.label }}
+                                    {{ p_form.Longitude }}
+                                    <span class="small text-danger"> {{ p_form.errors.Longitude }} </span>
+
+                                </div>
+
+                                <div class="col-lg-3 mt-2">
+                                    {{ p_form.Address.label }}
+                                    {{ p_form.Address }}
+                                    <span class="small text-danger"> {{ p_form.errors.Address }} </span>
+
+                                </div>
+
+                                <div class="col-lg-6 mt-2">
+                                    {{ p_form.About.label }}
+                                    {{ p_form.About }}
+                                    <span class="small text-danger"> {{ p_form.errors.About }} </span>
+
+                                </div>
+
+
                             </div>  
                             
                             <hr>
@@ -137,13 +168,14 @@
                             {% for aminity in aminities %}
 
                            
-                                <div class="col-lg-3 mt-2">
-                                  <input type="checkbox" name="aminities" value="{{aminity.id}}" >  {{aminity.Type}}
+                                <div class="col-lg-2 mt-2">
+                                  <input type="checkbox" class="aminities" name="aminities" value="{{aminity.id}}" >  {{aminity.Type}}
                                 </div>
                            
 
                             
                             {% endfor %}
+                            {{ p_form.propertyaminity}}
                         </div>
                         <hr>
                         <h5>Images</h5>
@@ -168,13 +200,7 @@
                               
 
                               {% endfor %}
-                             
-
-                            
-                            
-
-                              
-
+                           
                               
                         </div>
 
@@ -190,10 +216,52 @@
                               </div>
                         </div>
 
+                        <hr>
+                        <h5>Near by locations</h5>
+
+                        <div class="row">
+
+                            {% for nearby in nearbyformset %}
+
+                           
+
+                            <div class="col-lg-6 mt-2">
+                                {{ nearby.NearbyType.label }}
+                                {{ nearby.NearbyType }}
+                                
+                              </div>
+
+                              <div class="col-lg-6 mt-2">
+                                {{ nearby.Distance.label }}
+                                {{ nearby.Distance }}
+                                
+                              </div>
+
+                              
+
+                              {% endfor %}
+
+                        </div>
+
+                        <div class="row" id="add_property_nearby_contianer">
+
+
+                             
+                        </div>
+
+                        <div class="row">
+                            <div class="col-lg-12 mt-2">
+                                <input type="button" class="btn btn-sm btn-success" value="Add more " id="add-more-property-nearby">                            
+                              </div>
+                        </div>
+
+                      
+
                      
                         
                            
                         </div>
+                        <hr>
                         <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
                              <button type="submit" class="btn btn-primary">Register</button>
                         </div>

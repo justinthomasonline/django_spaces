@@ -2,6 +2,7 @@ from django.db import models
 from phonenumber_field.modelfields import PhoneNumberField
 from django.contrib.auth.models import User
 from PIL import Image
+from datetime import datetime
 
 # Create your models here.
 
@@ -18,9 +19,12 @@ class CreateAgency(models.Model):
     SupportingDocumentExpiry=models.DateField()
     Active=models.BooleanField(default=False)
     PaymentRequired=models.BooleanField(default=True)
-    PaymentExpiry=models.DateField()
+    PaymentExpiry=models.DateField(null=True,blank=True)
     NewRequest=models.BooleanField(default=True)
     Roles=models.CharField(max_length=20,null=False, blank=False,default='agency')
+
+    def __str__(self):
+       return self.AgencyName
     
     
 class Agent(models.Model):
@@ -45,6 +49,9 @@ class Agent(models.Model):
             output_size = (300,300)
             img.thumbnail(output_size)
             img.save(self.Image.path)
+
+    def __str__(self):
+       return self.Name
 
         
 
